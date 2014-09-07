@@ -19,6 +19,12 @@ export default {
       this.get('/api/sightings', function() {
         return [200, {"Content-Type": "application/json"}, JSON.stringify({ sightings: SIGHTINGS })];
       });
+      this.get('/api/sightings/:id', function(request) {
+        var sighting = SIGHTINGS.find(function(s) {
+          return s.id === parseInt(request.params.id, 10);
+        });
+        return [200, {"Content-Type": "application/json"}, JSON.stringify(sighting)];
+      });
     });
   }
 };
