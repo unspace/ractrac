@@ -1,1 +1,20 @@
 {{#fancy-title}}Sightings{{/fancy-title}}
+
+<table class='table'>
+  <tr>
+    <th>Seen At</th>
+    <th>Location</th>
+    <th>Description</th>
+    <th>Height (cm)</th>
+    <th>Weight (kg)</th>
+  </tr>
+  {{#each sightings}}
+    <tr>
+      <td>{{seenAt}}</td>
+      <td>{{location}}</td>
+      <td>{{description}}</td>
+      <td>{{height}}</td>
+      <td>{{weight}}</td>
+    </tr>
+  {{/each}}
+</table>
