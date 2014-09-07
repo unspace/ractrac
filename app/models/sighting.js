@@ -16,6 +16,12 @@ Sighting.reopenClass({
         return Sighting.create(s);
       });
     });
+  },
+
+  find: function(id) {
+    return $.ajax('/api/sightings/' + id).then(function(s) {
+      return Sighting.create(s);
+    });
   }
 });
 

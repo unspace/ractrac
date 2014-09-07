@@ -7,7 +7,9 @@ var Router = Ember.Router.extend({
 
 Router.map(function() {
   this.route('overview');
-  this.route('sightings');
+  this.resource('sightings', function() {
+    this.route('show', {path: '/:sighting_id'});
+  });
 });
 
 export default Router;

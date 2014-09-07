@@ -1,22 +1,3 @@
 {{#fancy-title}}Sightings{{/fancy-title}}
 
-<table class='table'>
-  <tr>
-    <th>Seen At</th>
-    <th>Location</th>
-    <th>Description</th>
-    <th>Height (cm)</th>
-    <th>Weight (kg)</th>
-    <th>BMI</th>
-  </tr>
-  {{#each model}}
-    <tr>
-      <td>{{format-date seenAt}}</td>
-      <td>{{location}}</td>
-      <td>{{description}}</td>
-      <td>{{height}}</td>
-      <td>{{weight}}</td>
-      <td>{{bmi}}</td>
-    </tr>
-  {{/each}}
-</table>
+{{outlet}}
