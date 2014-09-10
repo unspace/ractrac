@@ -12,10 +12,9 @@ var Sighting = Ember.Object.extend({
 Sighting.reopenClass({
   findAll: function() {
     return $.ajax('/api/sightings').then(function(result) {
-      result.sightings = result.sightings.map(function(s) {
+      return result.sightings.map(function(s) {
         return Sighting.create(s);
       });
-      return result;
     });
   }
 });
