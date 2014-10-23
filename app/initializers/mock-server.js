@@ -44,14 +44,14 @@ export default {
         var sighting = sightings.find(function(s) {
           return s.id === parseInt(request.params.id, 10);
         });
-        return [200, {"Content-Type": "application/json"}, JSON.stringify(sighting)];
+        return [200, {"Content-Type": "application/json"}, JSON.stringify({sighting: sighting})];
       });
 
       this.post('/api/sightings', function(request) {
         if (!request.requestBody) {
           return [500, {"Content-Type": "application/json"}, JSON.stringify({error: 'you made me sad'})];
         }
-        var data = parsePostData(request.requestBody);
+        var data = JSON.parse(request.requestBody).sighting;
 
         var maxId = -1;
         sightings.forEach(function(s) {
@@ -62,7 +62,7 @@ export default {
         sightings.pushObject(data);
         localStorage.setItem(LOCALSTORAGE_KEY, JSON.stringify(sightings));
 
-        return [200, {"Content-Type": "application/json"}, JSON.stringify(data)];
+        return [200, {"Content-Type": "application/json"}, JSON.stringify({sighting: data})];
       });
 
     });

@@ -1,36 +1,14 @@
-/* global $:true */
+import DS from 'ember-data';
 
-import Ember from 'ember';
+export default DS.Model.extend({
+  seenAt: DS.attr('date'),
+  location: DS.attr('string'),
+  description: DS.attr('string'),
+  height: DS.attr('number'),
+  weight: DS.attr('number'),
 
-var Sighting = Ember.Object.extend({
   bmi: function() {
     var heightM = this.get('height') / 100.0;
     return this.get('weight') / (heightM * heightM);
-  }.property('weight', 'height'),
-
-  save: function() {
-    var data = this.getProperties('location','description','height','weight');
-    return $.ajax('/api/sightings/',{
-      type: 'POST',
-      data: data
-    });
-  }
+  }.property('weight', 'height')
 });
-
-Sighting.reopenClass({
-  findAll: function() {
-    return $.ajax('/api/sightings').then(function(result) {
-      return result.sightings.map(function(s) {
-        return Sighting.create(s);
-      });
-    });
-  },
-
-  find: function(id) {
-    return $.ajax('/api/sightings/' + id).then(function(s) {
-      return Sighting.create(s);
-    });
-  }
-});
-
-export default Sighting;
