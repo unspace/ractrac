@@ -1,14 +1,5 @@
 import Pretender from 'pretender';
 
-function parsePostData(query) {
-  var result = {};
-  query.split("&").forEach(function(part) {
-    var item = part.split("=");
-    result[item[0]] = decodeURIComponent(item[1]);
-  });
-  return result;
-}
-
 var _SIGHTINGS = [
   {id: 1, seenAt: new Date("2014-09-01"), location: "Alleyway", description: "Chubby", height: 30, weight: 9.0},
   {id: 2, seenAt: new Date("2014-09-02"), location: "Trash bin", description: "Smelly", height: 23, weight: 3.5},
